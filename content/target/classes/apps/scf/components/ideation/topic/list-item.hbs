@@ -1,0 +1,26 @@
+<div class="scf-topic-listitem" data-component-id="{{id}}" data-scf-component="scf/components/ideation/topic">
+    <aside class="scf-topic-userinfo">
+        <img class="scf-topic-avatar" src="{{author.largeAvatarUrl}}" alt="{{author.name}}" title="{{author.name}}"></img>
+    </aside>
+    <div class="scf-topic-col1">
+        <a href="{{friendlyUrl}}"><h3>{{subject}}</h3></a>
+        <div>
+            <a href="{{author.profileURL}}">{{author.name}}</a> <span class="scf-quiet">{{i18n "Posted"}} {{pretty-time created}}</span>
+            {{#if configuration.isTaggingAllowed}}
+            <ul class="scf-horizontal-tag-list">
+                {{#each tags}}
+                    <li class="scf-selected-tag">{{title}}</li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+        <p class="scf-comment-msg">
+            {{abbreviate message maxLength=256 safeString=configuration.isRTEEnabled}} <a href="{{friendlyUrl}}">{{i18n "Read More"}}</a>
+        </p>
+        {{likes}} Likes
+    </div>
+    <div class="scf-topic-col2">
+        <h3>{{totalSize}} <span class="scf-icon-comment"></span></h3>
+    </div>
+    <div class="scf-clear-both"></div>
+</div>

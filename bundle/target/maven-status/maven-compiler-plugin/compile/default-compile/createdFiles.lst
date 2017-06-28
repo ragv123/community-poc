@@ -1,0 +1,6 @@
+com/ttnd/community/journal/poc/JournalSocialComponent.class
+com/ttnd/community/journal/poc/create/CustomJournalOperationService.class
+com/ttnd/community/journal/poc/SCFJournalCreateExtension.class
+com/ttnd/community/journal/poc/CreateOperation.class
+com/ttnd/community/journal/poc/CustomJournalSocialComponentFactory.class
+com/ttnd/community/journal/poc/create/JournalCreateOperation.class

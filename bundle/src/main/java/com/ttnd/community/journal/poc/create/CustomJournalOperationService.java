@@ -1,8 +1,11 @@
 package com.ttnd.community.journal.poc.create;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +21,9 @@ import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.ReferenceCardinality;
 import org.apache.felix.scr.annotations.ReferencePolicy;
 import org.apache.felix.scr.annotations.Service;
+import org.apache.jackrabbit.api.security.user.Authorizable;
+import org.apache.jackrabbit.api.security.user.Group;
+import org.apache.jackrabbit.api.security.user.UserManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ModifiableValueMap;
 import org.apache.sling.api.resource.Resource;
@@ -190,10 +196,10 @@ public class CustomJournalOperationService extends
 		}
 		List<DataSource> attachments = getAttachmentsFromRequest(request, cs);
 
-		return create(resource, cs, name, props, attachments, session);
+		return create(resource, cs, name, props, attachments, session, userInfo);
 	}
 	
-	protected Resource create(Resource targetCommentSystemResource, CommentSystem cs, String author, Map<String, Object> props, List<DataSource> attachments, Session session)
+	protected Resource create(Resource targetCommentSystemResource, CommentSystem cs, String author, Map<String, Object> props, List<DataSource> attachments, Session session,String userInfo)
 		    throws OperationException
 		  {
 		    JournalOperation createOperation = getCreateOperation();
@@ -277,11 +283,33 @@ public class CustomJournalOperationService extends
 		          if (!StringUtils.isEmpty(entityUrl)) {
 		            vm.put("social:entity", entityUrl);
 		          }
-		          if ("admin".equals(author)) {
-		            vm.put("approved", Boolean.valueOf(true));
-		          } else if(!cs.isModerated()){
+		          if(!cs.isModerated()){
 		        	  vm.put("approved", Boolean.valueOf(true));
 		          }
+		          UserManager userManager = targetCommentSystemResource.getResourceResolver().adaptTo(UserManager.class);
+		          /* to get the current user */ 
+		          Authorizable auth;
+				try {
+					auth = userManager.getAuthorizable(userInfo);
+					/* to get the groups it is member of */ 
+			          Iterator<Group> groups = auth.memberOf();
+			          String [] selectedGroup = targetCommentSystemResource.adaptTo(ValueMap.class).get("oauth.create.users.groups",new String[0]);
+			          //Arrays.sort(selectedGroup);
+			          
+			          List<String> userGroups = Arrays.asList(selectedGroup);
+			          while(groups.hasNext()){
+			        	  if(userGroups.contains(groups.next().getID())){
+					          System.out.println("result true");
+					          vm.put("approved", Boolean.valueOf(true));
+					          break;
+			        	  }else{
+			        		  System.out.println("result false");
+			        	  }
+			          }
+				} catch (RepositoryException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e);
+				} 
 		          vm.put("eventTopic", getEventTopic());
 		          if ((vm.get("publishDate", Calendar.class) == null) && (!((Boolean)vm.get("isDraft", Boolean.valueOf(false))).booleanValue())) {
 		            vm.put("publishDate", Calendar.getInstance());

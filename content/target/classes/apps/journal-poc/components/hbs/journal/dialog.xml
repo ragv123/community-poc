@@ -8,7 +8,7 @@
             <items jcr:primaryType="cq:WidgetCollection">
                 <settings
                     jcr:primaryType="cq:Widget"
-                    path="/libs/social/journal/components/hbs/journal/tab_settings.infinity.json"
+                    path="/apps/journal-poc/components/hbs/journal/tab_settings.infinity.json"
                     xtype="cqinclude"/>
                 <userMod
                     jcr:primaryType="cq:Panel"

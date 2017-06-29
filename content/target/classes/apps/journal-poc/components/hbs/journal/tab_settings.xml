@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Panel"
     title="Settings">
     <items jcr:primaryType="cq:WidgetCollection">
@@ -31,6 +31,31 @@
             name="./moderateComments"
             type="checkbox"
             xtype="selection"/>
+        <premoderated
+            jcr:primaryType="cq:Widget"
+            defaultValue="{Boolean}false"
+            fieldLabel="Pre Moderated"
+            fieldLabel_commentI18n="PreModerated journal"
+            name="./premoderatedComments"
+            type="checkbox"
+            xtype="selection"/>
+        <createusersgroups
+            jcr:primaryType="cq:Widget"
+            addItemLabel="Add User Group"
+            allowBlank="{Boolean}true"
+            fieldLabel="Add to User Groups"
+            name="./oauth.create.users.groups"
+            orderable="{Boolean}false"
+            xtype="multifield">
+            <fieldConfig
+                jcr:primaryType="nt:unstructured"
+                editable="false"
+                fieldDescription="Examples: contributors, moderators"
+                name="./userName"
+                options="/libs/social/connect/components/facebookconnectpage.usergroupoptions.json"
+                type="select"
+                xtype="selection"/>
+        </createusersgroups>
         <closed
             jcr:primaryType="cq:Widget"
             defaultValue="{Boolean}false"

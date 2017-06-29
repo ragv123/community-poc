@@ -58,7 +58,7 @@
                         <embedded>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>cqscf-bundle</artifactId>
-                            <target>/apps/journal-poc/install</target>
+                            <target>/apps/blog/install</target>
                         </embedded>
                     </embeddeds>
                     <targetURL>http://${crx.host}:${crx.port}/crx/packmgr/service.jsp</targetURL>

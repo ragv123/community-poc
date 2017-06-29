@@ -1,6 +1,6 @@
-/home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/CreateOperation.java
-/home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/create/CustomJournalOperationService.java
+/home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/JournalEntrySocialComponent.java
+/home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/CustomJournalEntrySocialComponentFactory.java
+/home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/CustomJournalCommentSocialComponentFactory.java
 /home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/SCFJournalCreateExtension.java
-/home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/create/JournalCreateOperation.java
 /home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/JournalSocialComponent.java
 /home/rajeev/Data/TTN/Rajeev/Office_work/SCF-master/bundle/src/main/java/com/ttnd/community/journal/poc/CustomJournalSocialComponentFactory.java

@@ -3,4 +3,4 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     categories="[cq.custom.social.hbs.journal]"
     dependencies="[cq.shared,cq.jquery,cq.social.scf]"
-    embed="[cq.social.base,cq.social.author.hbs.comments,cq.social.author.hbs.subscriptions,cq.social.author.hbs.forum,cq.custom.social.author.hbs.journal]"/>
+    embed="[cq.social.base,cq.social.author.hbs.comments,cq.social.author.hbs.subscriptions,cq.social.author.hbs.forum,journal.poc.custom]"/>

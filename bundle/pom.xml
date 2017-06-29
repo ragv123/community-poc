@@ -143,7 +143,7 @@
 				<groupId>org.apache.sling</groupId>
 				<artifactId>maven-sling-plugin</artifactId>
 				<configuration>
-					<slingUrl>http://${crx.host}:${crx.port}/apps/journal-poc/install</slingUrl>
+					<slingUrl>http://${crx.host}:${crx.port}/apps/blog/install</slingUrl>
 					<usePut>true</usePut>
 				</configuration>
 			</plugin>

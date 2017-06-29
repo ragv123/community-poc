@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/etc/clientlibs/social/hbs/custom-journal"/>
-    <filter root="/apps/journal-poc"/>
-    <filter root="/apps/aem-community"/>
+    <filter root="/apps/blog"/>
+    <filter root="/apps/blog-template"/>
 </workspaceFilter>

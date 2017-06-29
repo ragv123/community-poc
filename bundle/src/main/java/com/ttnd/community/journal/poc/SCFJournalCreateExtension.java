@@ -1,6 +1,8 @@
 package com.ttnd.community.journal.poc;
-
-import java.util.Arrays;
+public class SCFJournalCreateExtension {
+	
+}
+/*import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -65,11 +67,11 @@ public class SCFJournalCreateExtension implements JournalOperationExtension {
 		
 		
 		UserManager userManager = resourceResolver.adaptTo(UserManager.class);
-        /* to get the current user */ 
+         to get the current user  
         Authorizable auth;
 		try {
 			auth = userManager.getAuthorizable(userIdentifier);
-			/* to get the groups it is member of */ 
+			 to get the groups it is member of  
 	          Iterator<Group> groups = auth.memberOf();
 	          //String [] selectedGroup = targetCommentSystemResource.adaptTo(ValueMap.class).get("oauth.create.users.groups",new String[0]);
 	          //Arrays.sort(selectedGroup);
@@ -94,7 +96,7 @@ public class SCFJournalCreateExtension implements JournalOperationExtension {
 		
 		
 		
-		/*if (ResourceUtil.isA(paramResource, "social/journal/components/hbs/journal")) {
+		if (ResourceUtil.isA(paramResource, "social/journal/components/hbs/journal")) {
 			LOG.info("Approved Value" + paramMap);
         	LOG.info("User is : " + paramSession.getUserID());
         	Boolean isApproved = true;
@@ -102,7 +104,7 @@ public class SCFJournalCreateExtension implements JournalOperationExtension {
             if(paramSession.getUserID().equals("admin")){
             	paramMap.put("approved", isApproved);
             }
-		}*/
+		}
 		
 	}
 
@@ -114,3 +116,4 @@ public class SCFJournalCreateExtension implements JournalOperationExtension {
 	}
 
 }
+*/

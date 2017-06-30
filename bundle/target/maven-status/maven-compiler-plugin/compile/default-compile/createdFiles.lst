@@ -1,6 +1,9 @@
 com/ttnd/community/journal/poc/JournalSocialComponent.class
-com/ttnd/community/journal/poc/JournalEntrySocialComponent.class
+com/ttnd/community/journal/provider/CustomJournalListProvider$1.class
 com/ttnd/community/journal/poc/CustomJournalEntrySocialComponentFactory.class
 com/ttnd/community/journal/poc/CustomJournalCommentSocialComponentFactory.class
+com/ttnd/community/journal/provider/CustomJournalSocialComponentList.class
+com/ttnd/community/journal/poc/JournalEntrySocialComponent.class
+com/ttnd/community/journal/provider/CustomJournalListProvider.class
 com/ttnd/community/journal/poc/SCFJournalCreateExtension.class
 com/ttnd/community/journal/poc/CustomJournalSocialComponentFactory.class

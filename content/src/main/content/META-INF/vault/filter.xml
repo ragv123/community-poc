@@ -2,5 +2,6 @@
 <workspaceFilter version="1.0">
     <filter root="/etc/clientlibs/social/hbs/custom-journal"/>
     <filter root="/apps/blog"/>
+    <filter root="/apps/social/journal"/>
     <filter root="/apps/blog-template"/>
 </workspaceFilter>

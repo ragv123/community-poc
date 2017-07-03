@@ -10,5 +10,5 @@
 %><%
 	// TODO add you code here
 %>
-<cq:includeClientLib categories="cq.ckeditor, cq.social.hbs.voting, cq.custom.social.hbs.journal"/>
+<cq:includeClientLib categories="cq.ckeditor, cq.social.hbs.voting, cq.social.hbs.journal"/>
 <cq:include path="par" resourceType="foundation/components/parsys"/>

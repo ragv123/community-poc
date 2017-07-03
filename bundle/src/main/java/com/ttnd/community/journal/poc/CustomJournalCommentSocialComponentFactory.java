@@ -48,6 +48,11 @@ public class CustomJournalCommentSocialComponentFactory extends AbstractSocialCo
 		return null;
 	}
 
+	@Override
+	public int getPriority() {
+		return 100;
+	}
+
 	public String getSupportedResourceType() {
 		return "blog/components/hbs/comment";
 	}

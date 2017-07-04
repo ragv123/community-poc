@@ -25,7 +25,7 @@
                 model: "BlogTopicModel"
             }
         },
-        createOperation: "social:createJournalComment",
+        createOperation: "social:createJournal",
         events: {
             ADD: "blogtopic:added",
             ADD_ERROR: "blogtopic:adderror"
@@ -335,8 +335,8 @@
     var BlogPost = SCF.Post.extend({
         modelName: "BlogPostModel",
         DELETE_OPERATION: "social:deleteJournalComment",
-        UPDATE_OPERATION: "social:updateJournalComment",
-        CREATE_OPERATION: "social:createJournalComment",
+        UPDATE_OPERATION: "social:updateJournal",
+        CREATE_OPERATION: "social:createJournal",
         relationships: {
             "items": {
                 collection: "BlogPostList",
@@ -355,8 +355,8 @@
     var BlogTopic = SCF.Topic.extend({
         modelName: "BlogTopicModel",
         DELETE_OPERATION: "social:deleteJournalComment",
-        UPDATE_OPERATION: "social:updateJournalComment",
-        CREATE_OPERATION: "social:createJournalComment",
+        UPDATE_OPERATION: "social:updateJournal",
+        CREATE_OPERATION: "social:createJournal",
         relationships: {
             "items": {
                 collection: "BlogTopicList",

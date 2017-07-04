@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <scr:component immediate="true" name="Blog Social journal Comment Component Factory">
+        <implementation class="com.ttn.community.journal.factory.CustomJournalCommentSocialComponentFactory"/>
+        <service servicefactory="false">
+            <provide interface="com.adobe.cq.social.scf.SocialComponentFactory"/>
+        </service>
+        <property name="priority" type="Integer" value="0"/>
+        <property name="service.pid" value="Blog Social journal Comment Component Factory"/>
+        <reference name="listProviderManager" interface="com.adobe.cq.social.commons.comments.listing.CommentSocialComponentListProviderManager" cardinality="1..1" policy="static" bind="bindListProviderManager" unbind="unbindListProviderManager"/>
+        <reference name="xss" interface="com.adobe.granite.xss.XSSAPI" cardinality="1..1" policy="static" bind="bindXss" unbind="unbindXss"/>
+        <reference name="socialUtils" interface="com.adobe.cq.social.ugcbase.SocialUtils" cardinality="1..1" policy="static" bind="bindSocialUtils" unbind="unbindSocialUtils"/>
+        <reference name="clientUtilFactory" interface="com.adobe.cq.social.scf.ClientUtilityFactory" cardinality="1..1" policy="static" bind="bindClientUtilFactory" unbind="unbindClientUtilFactory"/>
+    </scr:component>
+</components>

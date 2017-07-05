@@ -7,8 +7,4 @@
     <Designate pid="com.ttn.community.journal.service.CustomJournalOperationService">
         <Object ocdref="com.ttn.community.journal.service.CustomJournalOperationService"/>
     </Designate>
-    <OCD id="Journal Extension" name="%Journal Extension.name" description="%Journal Extension.description"/>
-    <Designate pid="Journal Extension">
-        <Object ocdref="Journal Extension"/>
-    </Designate>
 </metatype:MetaData>

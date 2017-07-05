@@ -204,7 +204,8 @@ public class CustomJournalOperationService extends
 		if (normalizedMessage.codePointCount(0, normalizedMessage.length()) > messageCharacterLimit) {
 			throw new OperationException("Parameter message exceeded character limit", 400);
 		}
-		boolean rootPathExists = getResource(cs.getRootPath(), session) != null;
+		// boolean rootPathExists = getResource(cs.getRootPath(), session) !=
+		// null;
 		if (props.containsKey("message")) {
 			props.put("jcr:description", props.get("message"));
 			props.remove("message");
@@ -251,20 +252,31 @@ public class CustomJournalOperationService extends
 						vm.put("approved", Boolean.valueOf(true));
 					}
 					try {
+						ValueMap properties = targetCommentSystemResource.getValueMap();
+						ResourceResolver resourceResolver = targetCommentSystemResource.getResourceResolver();
 						if ("blog/components/hbs/journal".equals(targetCommentSystemResource.getResourceType())) {
-							ValueMap properties = targetCommentSystemResource.getValueMap();
-							ResourceResolver resourceResolver = targetCommentSystemResource.getResourceResolver();
 							String[] selectedGroup = properties.get("oauth.create.users.groups", new String[0]);
 							Iterator<Group> groups = getUserGroups(resourceResolver);
 							List<String> userGroups = Arrays.asList(selectedGroup);
 							while (groups.hasNext()) {
 								if (userGroups.contains(groups.next().getID())) {
 									vm.put("approved", Boolean.valueOf(true));
+									vm.put("isFlagged", Boolean.valueOf(false));
+									vm.put("isSpam", Boolean.valueOf(false));
+									vm.put("isFlaggedHidden", Boolean.valueOf(false));
 									break;
 								}
 							}
 						} else {
-							vm.put("approved", Boolean.valueOf(true));
+							String root = properties.get("social:rootCommentSystem", String.class);
+							ValueMap rootResourceMap = resourceResolver.resolve(root).adaptTo(ValueMap.class);
+							boolean commentAutoModerated = rootResourceMap.get("premoderatedComments", false);
+							if (commentAutoModerated) {
+								vm.put("approved", Boolean.valueOf(true));
+								vm.put("isFlagged", Boolean.valueOf(false));
+								vm.put("isSpam", Boolean.valueOf(false));
+								vm.put("isFlaggedHidden", Boolean.valueOf(false));
+							}
 						}
 					} catch (RepositoryException e) {
 						LOGGER.error("Repository exception : ", e);
@@ -328,6 +340,7 @@ public class CustomJournalOperationService extends
 		}
 		return obj.toString();
 	}
+
 	protected void bindComponentFactoryManager(SocialComponentFactoryManager paramSocialComponentFactoryManager) {
 		this.componentFactoryManager = paramSocialComponentFactoryManager;
 	}
@@ -337,9 +350,7 @@ public class CustomJournalOperationService extends
 			this.componentFactoryManager = null;
 		}
 	}
-	
-	
-	
+
 	protected Resource update(Resource commentResource, CommentSystem cs, Map<String, Object> props,
 			List<DataSource> attachments, Session session, String author) throws OperationException {
 		com.adobe.cq.social.commons.Comment comment = getComment(commentResource, session);
@@ -385,21 +396,30 @@ public class CustomJournalOperationService extends
 			if (cs.isModerated()) {
 				properties.remove("approved");
 			}
+			ResourceResolver resourceResolver = comment.getResource().getResourceResolver();
+			String root = properties.get("social:rootCommentSystem", String.class);
+			ValueMap rootResourceMap = resourceResolver.resolve(root).adaptTo(ValueMap.class);
 			if ("blog/components/hbs/entry_topic".equals(commentResource.getResourceType())) {
-				String root = properties.get("social:rootCommentSystem", String.class);
-				ResourceResolver resourceResolver = comment.getResource().getResourceResolver();
-				ValueMap rootResourceMap = resourceResolver.resolve(root).adaptTo(ValueMap.class);
 				String[] selectedGroup = rootResourceMap.get("oauth.create.users.groups", new String[0]);
 				Iterator<Group> groups = getUserGroups(resourceResolver);
 				List<String> userGroups = Arrays.asList(selectedGroup);
 				while (groups.hasNext()) {
 					if (userGroups.contains(groups.next().getID())) {
 						properties.put("approved", Boolean.valueOf(true));
+						properties.put("isFlagged", Boolean.valueOf(false));
+						properties.put("isSpam", Boolean.valueOf(false));
+						properties.put("isFlaggedHidden", Boolean.valueOf(false));
 						break;
 					}
 				}
 			} else {
-				properties.put("approved", Boolean.valueOf(true));
+				boolean commentAutoModerated = rootResourceMap.get("premoderatedComments", false);
+				if (commentAutoModerated) {
+					properties.put("approved", Boolean.valueOf(true));
+					properties.put("isFlagged", Boolean.valueOf(false));
+					properties.put("isSpam", Boolean.valueOf(false));
+					properties.put("isFlaggedHidden", Boolean.valueOf(false));
+				}
 			}
 			properties.put("moderate", Boolean.TRUE);
 			properties.put("cq:lastModified", Calendar.getInstance());
@@ -468,9 +488,8 @@ public class CustomJournalOperationService extends
 			throw new OperationException("Failed to update comment", e, 500);
 		}
 	}
-			  
-	private Iterator<Group> getUserGroups(ResourceResolver resourceResolver)
-			throws RepositoryException {
+
+	private Iterator<Group> getUserGroups(ResourceResolver resourceResolver) throws RepositoryException {
 		UserProperties up = (UserProperties) resourceResolver.adaptTo(UserProperties.class);
 		String userIdentifier = (up == null) ? null : up.getAuthorizableID();
 		UserManager userManager = resourceResolver.adaptTo(UserManager.class);
@@ -478,6 +497,5 @@ public class CustomJournalOperationService extends
 		auth = userManager.getAuthorizable(userIdentifier);
 		return auth.memberOf();
 	}
-	
 
 }

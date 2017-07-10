@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>cqscf Package</comment>
+<comment>CommunityPoC Package</comment>
 <entry key="createdBy">rajeev</entry>
-<entry key="name">cqscf-content</entry>
-<entry key="created">2017-07-05T12:27:54.874+0530</entry>
-<entry key="groupId">com.ttnd.intellimeet.cqscf</entry>
+<entry key="name">community-poc-content</entry>
+<entry key="created">2017-07-07T13:53:24.183+0530</entry>
+<entry key="groupId">com.ttn.community.journal</entry>
 <entry key="version">1.0-SNAPSHOT</entry>
 <entry key="requiresRoot">false</entry>
 <entry key="group">ttnd</entry>
-<entry key="description">Maven Multimodule project for cqscf.</entry>
-<entry key="artifactId">cqscf-content</entry>
-<entry key="path">/etc/packages/ttnd/cqscf-content.zip</entry>
+<entry key="description">Maven Multimodule project for community-PoC.</entry>
+<entry key="artifactId">community-poc-content</entry>
+<entry key="path">/etc/packages/ttnd/community-poc-content.zip</entry>
 </properties>

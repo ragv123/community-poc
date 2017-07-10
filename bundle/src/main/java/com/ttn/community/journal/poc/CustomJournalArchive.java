@@ -98,10 +98,10 @@ public class CustomJournalArchive
       int year = Integer.parseInt(fields[0]);
       int month = Integer.parseInt(fields[1]);
       calendar1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-      calendar1.set(year, month - 1, 1, 0, 0, 0);
+      calendar1.set(year, month, 1, 0, 0, 0);
       
       calendar2 = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-      calendar2.set(year, month - 1, calendar1.getActualMaximum(5), calendar1.getActualMaximum(11), calendar1.getActualMaximum(12), calendar1.getActualMaximum(13));
+      calendar2.set(year, month, calendar1.getActualMaximum(5), calendar1.getActualMaximum(11), calendar1.getActualMaximum(12), calendar1.getActualMaximum(13));
     }
     else
     {
@@ -143,7 +143,7 @@ public class CustomJournalArchive
       {
         String[] fields = period.split("/");
         int year = Integer.parseInt(fields[0]);
-        int month = Integer.parseInt(fields[1]) - 1;
+        int month = Integer.parseInt(fields[1]);
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, 1);
         return monthDf.format(calendar.getTime());

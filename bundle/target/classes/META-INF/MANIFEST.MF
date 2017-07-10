@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1499237873050
+Bnd-LastModified: 1499415799269
 Build-Jdk: 1.8.0_131
 Built-By: rajeev
 Bundle-ClassPath: .,jackson-annotations-2.2.2.jar
-Bundle-Description: Maven Multimodule project for cqscf.
+Bundle-Description: Maven Multimodule project for community-PoC.
 Bundle-ManifestVersion: 2
-Bundle-Name: cqscf Bundle
-Bundle-SymbolicName: com.ttnd.intellimeet.cqscf.cqscf-bundle
+Bundle-Name: CommunityPoC Bundle
+Bundle-SymbolicName: com.ttn.community.journal-bundle
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
 Embed-Dependency: jackson-annotations

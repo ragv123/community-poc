@@ -253,7 +253,7 @@ public class CustomJournalSidebar extends BaseSocialComponent implements Journal
 					SimpleDateFormat format = new SimpleDateFormat("yyyy/MM");
 					Date date = incomingDateFormat.parse(key);
 					CustomJournalArchive journalArchive = this.getArchive(max, dateFormat);
-					journalArchive.getClass();
+					//journalArchive.getClass();
 					periods.add(journalArchive.new Period(format.format(date), periodTitle,
 							((Integer) dateFieldResults.get(key)).toString()));
 					this.archiveCounts.put(periodTitle, (Integer) dateFieldResults.get(key));
